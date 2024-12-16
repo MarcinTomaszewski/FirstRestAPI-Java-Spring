@@ -5,6 +5,7 @@ import pl.vistula.firstrestapi.product.domain.Product;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class ProductRepository {
@@ -16,6 +17,10 @@ public class ProductRepository {
     public Product save(Product entity) {
         return setId(entity);
 //        return entity;
+    }
+
+    public Optional<Product> findById(long id) {
+        return Optional.ofNullable(map.get(id));
     }
 
     private Product setId(Product entity) {

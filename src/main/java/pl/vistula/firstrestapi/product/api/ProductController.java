@@ -9,6 +9,8 @@ import pl.vistula.firstrestapi.product.api.request.UpdateProductRequest;
 import pl.vistula.firstrestapi.product.api.response.ProductResponse;
 import pl.vistula.firstrestapi.product.service.ProductService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -37,5 +39,12 @@ public class ProductController {
     public ResponseEntity<ProductResponse> update(@PathVariable Long id, @RequestBody UpdateProductRequest updateProductRequest){
         ProductResponse productResponse = productService.update(id, updateProductRequest);
         return ResponseEntity.status(HttpStatus.OK).body(productResponse);
+    }
+
+    @GetMapping
+    @Operation(summary = "Find all products")
+    public ResponseEntity<List<ProductResponse>> findAll(){
+        List<ProductResponse> productResponses = productService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(productResponses);
     }
 }

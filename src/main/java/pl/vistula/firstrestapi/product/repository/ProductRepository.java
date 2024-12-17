@@ -3,9 +3,7 @@ package pl.vistula.firstrestapi.product.repository;
 import org.springframework.stereotype.Repository;
 import pl.vistula.firstrestapi.product.domain.Product;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class ProductRepository {
@@ -32,5 +30,9 @@ public class ProductRepository {
             counter++;
         }
         return entity;
+    }
+
+    public List<Product> findAll() {
+        return new ArrayList<>(map.values());
     }
 }

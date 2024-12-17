@@ -47,4 +47,11 @@ public class ProductController {
         List<ProductResponse> productResponses = productService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(productResponses);
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete item")
+    public ResponseEntity<ProductResponse> delete(@PathVariable Long id){
+        productService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
